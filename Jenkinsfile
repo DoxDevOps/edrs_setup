@@ -18,5 +18,17 @@ pipeline {
       }
     }
 
+    stage('Fetching touchscreentoolkit') {
+      steps {
+        echo 'Changing directory to public'
+        sh 'cd $WORKSPACE/edrs_facility/public'
+        echo 'Checking if touchscreentoolkit already exists'
+        sh '[ -d "touchscreentoolkit" ] && echo "touchscreentoolkit already cloned." || git clone https://github.com/HISMalawi/touchscreentoolkit.git'
+        echo 'Changing directory to touchscreentoolkit'
+        sh 'cd $WORKSPACE/edrs_facility/public/touchscreentoolkit && git pull'
+        echo 'all changes up-to-date'
+      }
+    }
+
   }
 }
