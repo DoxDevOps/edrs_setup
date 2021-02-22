@@ -18,7 +18,7 @@ pipeline {
       }
     }
 
-    stage('Fetching touchscreentoolkit') {
+    stage('Fetching') {
       parallel {
         stage('Fetching touchscreentoolkit') {
           steps {
