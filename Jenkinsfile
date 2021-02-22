@@ -37,9 +37,9 @@ pipeline {
             echo 'Changing directory to bin'
             sh 'cd $WORKSPACE/edrs_facility/bin'
             echo 'Checking if couchdb-dump already exists'
-            sh '[ -d "couchdb-dump" ] && echo "couchdb-dump already cloned." || git clone https://github.com/danielebailo/couchdb-dump.git'
+            sh 'git clone https://github.com/danielebailo/couchdb-dump.git'
             echo 'Changing directory to couchdb-dump'
-            sh 'cd $WORKSPACE/edrs_facility/bin/couchdb-dump && git pull'
+            sh 'cd $WORKSPACE/edrs_facility/bin/couchdb-dump'
             echo 'Renaming couchdb-dump.sh to couchdb-backup.sh'
             sh 'mv couchdb-dump.sh couchdb-backup.sh'
           }
