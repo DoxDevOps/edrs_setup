@@ -19,14 +19,32 @@ pipeline {
     }
 
     stage('Fetching touchscreentoolkit') {
-      steps {
-        echo 'Changing directory to public'
-        sh 'cd $WORKSPACE/edrs_facility/public'
-        echo 'Checking if touchscreentoolkit already exists'
-        sh '[ -d "touchscreentoolkit" ] && echo "touchscreentoolkit already cloned." || git clone https://github.com/HISMalawi/touchscreentoolkit.git'
-        echo 'Changing directory to touchscreentoolkit'
-        sh 'cd $WORKSPACE/edrs_facility/public/touchscreentoolkit && git pull'
-        echo 'all changes up-to-date'
+      parallel {
+        stage('Fetching touchscreentoolkit') {
+          steps {
+            echo 'Changing directory to public'
+            sh 'cd $WORKSPACE/edrs_facility/public'
+            echo 'Checking if touchscreentoolkit already exists'
+            sh '[ -d "touchscreentoolkit" ] && echo "touchscreentoolkit already cloned." || git clone https://github.com/HISMalawi/touchscreentoolkit.git'
+            echo 'Changing directory to touchscreentoolkit'
+            sh 'cd $WORKSPACE/edrs_facility/public/touchscreentoolkit && git pull'
+            echo 'all changes up-to-date'
+          }
+        }
+
+        stage('Fetching couchdb-dump') {
+          steps {
+            echo 'Changing directory to bin'
+            sh 'cd $WORKSPACE/edrs_facility/bin'
+            echo 'Checking if couchdb-dump already exists'
+            sh '[ -d "couchdb-dump" ] && echo "couchdb-dump already cloned." || git clone https://github.com/danielebailo/couchdb-dump.git'
+            echo 'Changing directory to couchdb-dump'
+            sh 'cd $WORKSPACE/edrs_facility/bin/couchdb-dump && git pull'
+            echo 'Renaming couchdb-dump.sh to couchdb-backup.sh'
+            sh 'mv couchdb-dump.sh couchdb-backup.sh'
+          }
+        }
+
       }
     }
 
