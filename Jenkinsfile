@@ -18,7 +18,7 @@ pipeline {
       }
     }
 
-    stage('Fetching') {
+    stage('Configuring EDRS') {
       parallel {
         stage('Fetching touchscreentoolkit') {
           steps {
@@ -34,14 +34,16 @@ pipeline {
 
         stage('Fetching couchdb-dump') {
           steps {
-            echo 'Changing directory to bin'
-            sh 'cd $WORKSPACE/edrs_facility/bin'
             echo 'Checking if couchdb-dump already exists'
             sh '[ -d "$WORKSPACE/edrs_facility/bin/couchdb-dump" ] && echo "couchdb-dump already cloned." || git clone https://github.com/danielebailo/couchdb-dump.git $WORKSPACE/edrs_facility/bin/couchdb-dump'
-            echo 'Changing directory to couchdb-dump'
-            sh 'cd $WORKSPACE/edrs_facility/bin/couchdb-dump'
             echo 'Renaming couchdb-dump.sh to couchdb-backup.sh'
             sh '[ -f "$WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-backup.sh" ] && echo "couchdb-backup.sh already exists." || mv $WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-dump.sh $WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-backup.sh'
+          }
+        }
+
+        stage('Copying .example files to .yml files') {
+          steps {
+            echo 'Changing directory to config'
           }
         }
 
