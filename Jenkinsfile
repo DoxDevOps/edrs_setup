@@ -22,12 +22,10 @@ pipeline {
       parallel {
         stage('Fetching touchscreentoolkit') {
           steps {
-            echo 'Changing directory to public'
-            sh 'cd $WORKSPACE/edrs_facility/public'
             echo 'Checking if touchscreentoolkit already exists'
             sh '[ -d "$WORKSPACE/edrs_facility/public/touchscreentoolkit" ] && echo "touchscreentoolkit already cloned." || git clone https://github.com/HISMalawi/touchscreentoolkit.git $WORKSPACE/edrs_facility/public/touchscreentoolkit'
-            echo 'Changing directory to touchscreentoolkit'
             sh 'cd $WORKSPACE/edrs_facility/public/touchscreentoolkit && git pull'
+            echo 'Pulling to check for latest changes'
             echo 'all changes up-to-date'
           }
         }
@@ -36,6 +34,8 @@ pipeline {
           steps {
             echo 'Checking if couchdb-dump already exists'
             sh '[ -d "$WORKSPACE/edrs_facility/bin/couchdb-dump" ] && echo "couchdb-dump already cloned." || git clone https://github.com/danielebailo/couchdb-dump.git $WORKSPACE/edrs_facility/bin/couchdb-dump'
+            echo 'Pulling to check latest changes'
+            sh 'cd $WORKSPACE/edrs_facility/bin/couchdb-dump && git pull'
             echo 'Renaming couchdb-dump.sh to couchdb-backup.sh'
             sh '[ -f "$WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-backup.sh" ] && echo "couchdb-backup.sh already exists." || mv $WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-dump.sh $WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-backup.sh'
           }
