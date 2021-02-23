@@ -41,7 +41,7 @@ pipeline {
             echo 'Changing directory to couchdb-dump'
             sh 'cd $WORKSPACE/edrs_facility/bin/couchdb-dump'
             echo 'Renaming couchdb-dump.sh to couchdb-backup.sh'
-            sh 'mv couchdb-dump.sh couchdb-backup.sh'
+            sh 'mv $WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-dump.sh $WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-backup.sh'
           }
         }
 
