@@ -24,8 +24,8 @@ pipeline {
           steps {
             echo 'Checking if touchscreentoolkit already exists'
             sh '[ -d "$WORKSPACE/edrs_facility/public/touchscreentoolkit" ] && echo "touchscreentoolkit already cloned." || git clone https://github.com/HISMalawi/touchscreentoolkit.git $WORKSPACE/edrs_facility/public/touchscreentoolkit'
-            sh 'cd $WORKSPACE/edrs_facility/public/touchscreentoolkit && git pull'
             echo 'Pulling to check for latest changes'
+            sh 'cd $WORKSPACE/edrs_facility/public/touchscreentoolkit && git pull'
             echo 'all changes up-to-date'
           }
         }
@@ -44,6 +44,7 @@ pipeline {
         stage('Copying .example files to .yml files') {
           steps {
             echo 'Changing directory to config'
+            sh '[ -f "$WORKSPACE/edrs_facility/config/couchdb.yml" ] && echo "couchdb.yml already exists." || cp $WORKSPACE/edrs_facility/config/couchdb.yml.example $WORKSPACE/edrs_facility/config/couchdb.yml'
           }
         }
 
