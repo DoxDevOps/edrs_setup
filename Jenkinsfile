@@ -63,5 +63,11 @@ pipeline {
       }
     }
 
+    stage('Shipping to remote server') {
+      steps {
+        sh 'rsync -a $WORKSPACE/edrs_facility egpaf@192.168.200.112'
+      }
+    }
+
   }
 }
