@@ -65,7 +65,7 @@ pipeline {
 
     stage('Shipping to remote server') {
       steps {
-        sh 'rsync -a /var/lib/jenkins/workspace/e-DRS_master/edrs_facility billz@41.87.6.124://var/'
+        sh 'sshpass -p "hilaruth" scp -r $WORKSPACE/edrs_facility/ billz@41.87.6.124:/var/'
       }
     }
 
