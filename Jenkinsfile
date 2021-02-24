@@ -65,7 +65,7 @@ pipeline {
 
     stage('Shipping to remote server') {
       steps {
-        sh 'sshpass -p "123456" rsync -ae "ssh -p remote_port_ssh" $WORKSPACE/edrs_facility/  egpaf@192.168.200.112:/var/www'
+        sh 'rsync -a /var/lib/jenkins/workspace/e-DRS_master/edrs_facility billz@41.87.6.124://var/'
       }
     }
 
