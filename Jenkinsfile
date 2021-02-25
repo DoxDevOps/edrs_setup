@@ -65,7 +65,7 @@ pipeline {
 
     stage('Shipping to remote server') {
       steps {
-        sh 'sshpass -p "hilaruth" scp -r $WORKSPACE/edrs_facility/ billz@41.87.6.124:/var/'
+        sh 'scp -r $WORKSPACE/edrs_facility/ opsuser@10.44.0.52:/home/opsuser/www'
       }
     }
 
