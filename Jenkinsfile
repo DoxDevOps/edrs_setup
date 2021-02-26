@@ -65,7 +65,7 @@ pipeline {
 
     stage('Shipping to remote server') {
       steps {
-        sh 'rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser/apps'
+        sh 'rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www'
       }
     }
 
