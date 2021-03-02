@@ -16,7 +16,11 @@ pipeline {
         sh 'chmod 777 $WORKSPACE/edrs_facility'
         echo 'Change directory to edrs_facility'
         sh 'cd $WORKSPACE/edrs_facility && git pull'
-        echo 'All changes are up-to-date.'
+        echo 'Fetching tags'
+        sh 'cd $WORKSPACE/edrs_facility && git fetch --tags -f'
+        echo 'Checking out to latest tag'
+        sh 'cd $WORKSPACE/edrs_facility && git checkout (git describe --tags `git rev-list --tags --max-count=1`)'
+        sh 'cd $WORKSPACE/edrs_facility && git describe > HEAD'
       }
     }
 
@@ -67,7 +71,7 @@ pipeline {
 
     stage('Shipping to remote server') {
       steps {
-        sh 'rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www'
+        sh 'rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser'
       }
     }
 
