@@ -79,7 +79,7 @@ pipeline {
       steps {
         echo 'Editng District id and Facility Code'
         sh '''#DevOpsXI
-sed -i \'s/2926/edrs_fc/\'; \'s/BT/DV/\' opsuser@10.44.0.52:/home/opsuser/edrs_facility/config/database.yml'''
+sed -i \'s/2926/1111/\'; \'s/BT/DV/\' opsuser@10.44.0.52:/home/opsuser/edrs_facility/config/settings.yml'''
       }
     }
 
