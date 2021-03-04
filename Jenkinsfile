@@ -78,18 +78,8 @@ pipeline {
     stage('Remote Server Configuration') {
       steps {
         echo 'Editng District id and Facility Code'
-        sh '''inputfile=$WORKSPACE/edrs_facility/health_facility.csv
-facilityname="Waruma"
-
-while IFS=, read -r column1 column2 column3
-do
-    if [ $column3 == $facilityname ]
-     then
-       echo "District id : $column1"
-       echo "Facility Code : $column2"
-     fi
-    
-done < $inputfile'''
+        sh '''#DevOpsXI
+sed -i \'s/2926/edrs_fc/\'; \'s/BT/DV/\' opsuser@10.44.0.52:/home/opsuser/edrs_facility/config/database.yml'''
       }
     }
 
