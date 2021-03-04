@@ -79,7 +79,7 @@ pipeline {
       steps {
         echo 'Editng District id and Facility Code'
         sh '''#OpsuserServer
-ssh opsuser@10.44.0.52 "sed -i \'s/\\#\\\'1111\\\'/1111/\'; \'s/\\#BT \\| LL \\| ZA/DV/\' /home/opsuser/edrs_facility/config/settings.yml"'''
+ssh opsuser@10.44.0.52 "sed -i "s/\\#\\\'1111\\\'/1111/"; "s/\\#BT\\ \\|\\ LL\\ \\| ZA/DV/" /home/opsuser/edrs_facility/config/settings.yml"'''
       }
     }
 
