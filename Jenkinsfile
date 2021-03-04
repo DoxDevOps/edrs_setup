@@ -81,7 +81,7 @@ pipeline {
         sh '''#OpsuserServer
 fc_code="#\'2926\'"
 ds_code="#BT | LL | ZA"
-ssh opsuser@10.44.0.52 "sed -i \'s/$fc_code/1111/\'; \'s/$ds_code/DV/\' /home/opsuser/edrs_facility/config/settings.yml"'''
+ssh opsuser@10.44.0.52 "sed -i \'s/$fc_code/1111/\' /home/opsuser/edrs_facility/config/settings.yml"'''
       }
     }
 
