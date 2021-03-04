@@ -79,7 +79,7 @@ pipeline {
       steps {
         echo 'Editng District id and Facility Code'
         sh '''inputfile=$WORKSPACE/edrs_facility/health_facility.csv
-facilityname=Waruma
+facilityname="Waruma"
 
 while IFS=, read -r column1 column2 column3
 do
