@@ -78,7 +78,7 @@ pipeline {
     stage('Remote Server Configuration') {
       steps {
         echo 'Editng District id and Facility Code'
-        sh '''inputfile=health_facility.csv
+        sh '''inputfile=$WORKSPACE/edrs_facility/health_facility.csv
 facilityname=Waruma
 
 while IFS=, read -r column1 column2 column3
