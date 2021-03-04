@@ -75,5 +75,11 @@ pipeline {
       }
     }
 
+    stage('Remote Server Configuration') {
+      steps {
+        echo 'Editng District id and Facility Code'
+      }
+    }
+
   }
 }
