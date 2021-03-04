@@ -78,6 +78,18 @@ pipeline {
     stage('Remote Server Configuration') {
       steps {
         echo 'Editng District id and Facility Code'
+        sh '''inputfile=health_facility.csv
+facilityname=Waruma
+
+while IFS=, read -r column1 column2 column3
+do
+    if [ $column3 == $facilityname ]
+     then
+       echo "District id : $column1"
+       echo "Facility Code : $column2"
+     fi
+    
+done < $inputfile'''
       }
     }
 
