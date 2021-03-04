@@ -78,7 +78,8 @@ pipeline {
     stage('Remote Server Configuration') {
       steps {
         echo 'Editng District id and Facility Code'
-        sh 'ssh opsuser@10.44.0.52 "sed -i \'s/2926/1111/\' /home/opsuser/edrs_facility/config/settings.yml"'
+        sh '''#OpsuserServer
+ssh opsuser@10.44.0.52 "sed -i \'s/\\#\\\'1111\\\'/1111/\'; \'s/\\#BT \\| LL \\| ZA/DV/\' /home/opsuser/edrs_facility/config/settings.yml"'''
       }
     }
 
