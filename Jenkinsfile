@@ -89,10 +89,10 @@ rsync -a $WORKSPACE/edrs_facility meduser@10.41.150.10:/var/www'''
 ssh opsuser@10.44.0.52 "sed -i \'s/facility_code\\:/facility_code\\: 11111/; s/district_code\\:/district_code\\: DV1/\' /home/opsuser/edrs_facility/config/settings.yml"
 
 #Rumphi
-ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 11111/; s/district_code\\:/district_code\\: DV1/\' /home/opsuser/edrs_facility/config/settings.yml"
+ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 417/; s/district_code\\:/district_code\\: RU/\' /var/www/edrs_facility/config/settings.yml"
 
 #Ntchisi
-ssh meduser@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 11111/; s/district_code\\:/district_code\\: DV1/\' /home/opsuser/edrs_facility/config/settings.yml"
+ssh meduser@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 1210/; s/district_code\\:/district_code\\: NS/\' /var/www/edrs_facility/config/settings.yml"
 '''
       }
     }
