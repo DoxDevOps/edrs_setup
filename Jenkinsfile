@@ -78,7 +78,10 @@ rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser
 rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.20.20:/var/www
 
 #ntchisi Server
-rsync -a $WORKSPACE/edrs_facility meduser@10.41.150.10:/var/www'''
+rsync -a $WORKSPACE/edrs_facility meduser@10.41.150.10:/var/www
+
+#Chiradzulu Server
+rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www'''
       }
     }
 
@@ -93,6 +96,9 @@ ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 417/; 
 
 #Ntchisi
 ssh meduser@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 1210/; s/district_code\\:/district_code\\: NS/\' /var/www/edrs_facility/config/settings.yml"
+
+#Chiradzulu
+ssh nrb-admin@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 2801/; s/district_code\\:/district_code\\: CZ/\' /var/www/edrs_facility/config/settings.yml"
 '''
       }
     }
