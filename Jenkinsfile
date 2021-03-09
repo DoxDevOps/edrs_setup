@@ -108,7 +108,7 @@ ssh meduser@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 1210/; s/
         stage('Shipping ruby gems') {
           steps {
             sh '''#Ntchisi
-rsync -a $WORKSPACE/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility'''
+rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility'''
           }
         }
 
