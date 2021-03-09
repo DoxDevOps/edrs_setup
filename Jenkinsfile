@@ -72,34 +72,46 @@ pipeline {
     stage('Shipping to remote server') {
       steps {
         sh '''#OpsUsers Server
-rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser
+#rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser
 
 #Rumphi Server
-rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.20.20:/var/www
+#rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.20.20:/var/www
 
 #ntchisi Server
 rsync -a $WORKSPACE/edrs_facility meduser@10.41.150.10:/var/www
 
 #Chiradzulu Server
-rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www'''
       }
     }
 
     stage('Remote Server Configuration') {
-      steps {
-        echo 'Editng District id and Facility Code'
-        sh '''#OpsUser
-ssh opsuser@10.44.0.52 "sed -i \'s/facility_code\\:/facility_code\\: 11111/; s/district_code\\:/district_code\\: DV1/\' /home/opsuser/edrs_facility/config/settings.yml"
+      parallel {
+        stage('Remote Server Configuration') {
+          steps {
+            echo 'Editng District id and Facility Code'
+            sh '''#OpsUser
+#ssh opsuser@10.44.0.52 "sed -i \'s/facility_code\\:/facility_code\\: 11111/; s/district_code\\:/district_code\\: DV1/\' /home/opsuser/edrs_facility/config/settings.yml"
 
 #Rumphi
-ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 417/; s/district_code\\:/district_code\\: RU/\' /var/www/edrs_facility/config/settings.yml"
+#ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 417/; s/district_code\\:/district_code\\: RU/\' /var/www/edrs_facility/config/settings.yml"
 
 #Ntchisi
 ssh meduser@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 1210/; s/district_code\\:/district_code\\: NS/\' /var/www/edrs_facility/config/settings.yml"
 
 #Chiradzulu
-ssh nrb-admin@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 2801/; s/district_code\\:/district_code\\: CZ/\' /var/www/edrs_facility/config/settings.yml"
+#ssh nrb-admin@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 2801/; s/district_code\\:/district_code\\: CZ/\' /var/www/edrs_facility/config/settings.yml"
 '''
+          }
+        }
+
+        stage('Shipping ruby gems') {
+          steps {
+            sh '''#Ntchisi
+rsync -a $WORKSPACE/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility'''
+          }
+        }
+
       }
     }
 
