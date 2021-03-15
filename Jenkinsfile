@@ -84,7 +84,10 @@ pipeline {
 #rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www
 
 #Mwanza Server
-rsync -a $WORKSPACE/edrs_facility meduser@10.43.113.9:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility meduser@10.43.113.9:/var/www
+
+#Nkhotakota Server
+rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www'''
       }
     }
 
@@ -106,7 +109,10 @@ rsync -a $WORKSPACE/edrs_facility meduser@10.43.113.9:/var/www'''
 #ssh nrb-admin@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 2801/; s/district_code\\:/district_code\\: CZ/\' /var/www/edrs_facility/config/settings.yml"
 
 #Mwanza
-ssh meduser@10.43.113.9 "sed -i \'s/facility_code\\:/facility_code\\: 3801/; s/district_code\\:/district_code\\: MN/\' /var/www/edrs_facility/config/settings.yml"
+#ssh meduser@10.43.113.9 "sed -i \'s/facility_code\\:/facility_code\\: 3801/; s/district_code\\:/district_code\\: MN/\' /var/www/edrs_facility/config/settings.yml"
+
+#Nkhotakota
+ssh meduser@10.40.8.4 "sed -i \'s/facility_code\\:/facility_code\\: 1111/; s/district_code\\:/district_code\\: KK/\' /var/www/edrs_facility/config/settings.yml"
 '''
           }
         }
