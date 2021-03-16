@@ -61,7 +61,7 @@ pipeline {
             sh '[ -f "$WORKSPACE/edrs_facility/config/secrets.yml" ] && echo "secrets.yml already exists." || cp $WORKSPACE/edrs_facility/config/secrets.yml.example $WORKSPACE/edrs_facility/config/secrets.yml'
             sh '[ -f "$WORKSPACE/edrs_facility/config/settings.yml" ] && echo "settings.yml already exists." || cp $WORKSPACE/edrs_facility/config/settings.yml.example $WORKSPACE/edrs_facility/config/settings.yml'
             echo 'Editing settings.yml'
-            sh 'sed -i \'s/\\/home\\/usr\\/barcodes\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/certificates\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/dispatch\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/qrcodes\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/site_type\\: dc/site_type\\: facility #/\' $WORKSPACE/edrs_facility/config/settings.yml'
+            sh 'sed -i \'s/\\/home\\/usr\\/barcodes\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/certificates\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/dispatch\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/qrcodes\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/site_type\\: dc/site_type\\: facility/\' $WORKSPACE/edrs_facility/config/settings.yml'
             sh '[ -f "$WORKSPACE/edrs_facility/config/sync_settings.yml" ] && echo "sync_settings.yml already exists." || cp $WORKSPACE/edrs_facility/config/sync_settings.yml.example $WORKSPACE/edrs_facility/config/sync_settings.yml'
           }
         }
@@ -97,7 +97,7 @@ rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser
           steps {
             echo 'Editng District id and Facility Code'
             sh '''#OpsUser
-ssh opsuser@10.44.0.52 "sed -i \'s/facility_code\\:/facility_code\\: 22222/; s/district_code\\:/district_code\\: DV2/; s/site_type\\: dc/site_type\\: facility/\' /home/opsuser/edrs_facility/config/settings.yml"
+ssh opsuser@10.44.0.52 "sed -i \'s/facility_code\\:/facility_code\\: 3333/; s/district_code\\:/district_code\\: DV3/\' /home/opsuser/edrs_facility/config/settings.yml"
 
 #Rumphi
 #ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 417/; s/district_code\\:/district_code\\: RU/\' /var/www/edrs_facility/config/settings.yml"
