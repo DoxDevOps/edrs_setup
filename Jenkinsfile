@@ -61,7 +61,7 @@ pipeline {
             sh '[ -f "$WORKSPACE/edrs_facility/config/secrets.yml" ] && echo "secrets.yml already exists." || cp $WORKSPACE/edrs_facility/config/secrets.yml.example $WORKSPACE/edrs_facility/config/secrets.yml'
             sh '[ -f "$WORKSPACE/edrs_facility/config/settings.yml" ] && echo "settings.yml already exists." || cp $WORKSPACE/edrs_facility/config/settings.yml.example $WORKSPACE/edrs_facility/config/settings.yml'
             echo 'Editing settings.yml'
-            sh 'sed -i \'s/\\/home\\/usr\\/barcodes\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/certificates\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/dispatch\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/qrcodes\\//\\/var\\/www\\/edrs_facility\\/config\\//\' $WORKSPACE/edrs_facility/config/settings.yml'
+            sh 'sed -i \'s/\\/home\\/usr\\/barcodes\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/certificates\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/dispatch\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/\\/home\\/usr\\/qrcodes\\//\\/var\\/www\\/edrs_facility\\/config\\//; s/site_type\\: dc/site_type\\: facility/\' $WORKSPACE/edrs_facility/config/settings.yml'
             sh '[ -f "$WORKSPACE/edrs_facility/config/sync_settings.yml" ] && echo "sync_settings.yml already exists." || cp $WORKSPACE/edrs_facility/config/sync_settings.yml.example $WORKSPACE/edrs_facility/config/sync_settings.yml'
           }
         }
@@ -87,7 +87,7 @@ pipeline {
 #rsync -a $WORKSPACE/edrs_facility meduser@10.43.113.9:/var/www
 
 #Nkhotakota Server
-rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www'''
       }
     }
 
@@ -112,7 +112,7 @@ rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www'''
 #ssh meduser@10.43.113.9 "sed -i \'s/facility_code\\:/facility_code\\: 3801/; s/district_code\\:/district_code\\: MN/\' /var/www/edrs_facility/config/settings.yml"
 
 #Nkhotakota
-ssh meduser@10.40.8.4 "sed -i \'s/facility_code\\:/facility_code\\: 1111/; s/district_code\\:/district_code\\: KK/\' /var/www/edrs_facility/config/settings.yml"
+#ssh meduser@10.40.8.4 "sed -i \'s/facility_code\\:/facility_code\\: 1111/; s/district_code\\:/district_code\\: KK/\' /var/www/edrs_facility/config/settings.yml"
 '''
           }
         }
