@@ -72,7 +72,7 @@ pipeline {
     stage('Shipping to remote server') {
       steps {
         sh '''#OpsUsers Server
-#rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser
+rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser
 
 #Rumphi Server
 #rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.20.20:/var/www
@@ -97,7 +97,7 @@ pipeline {
           steps {
             echo 'Editng District id and Facility Code'
             sh '''#OpsUser
-#ssh opsuser@10.44.0.52 "sed -i \'s/facility_code\\:/facility_code\\: 11111/; s/district_code\\:/district_code\\: DV1/\' /home/opsuser/edrs_facility/config/settings.yml"
+ssh opsuser@10.44.0.52 "sed -i \'s/facility_code\\:/facility_code\\: 22222/; s/district_code\\:/district_code\\: DV2/; s/site_type\\: dc/site_type\\: facility/\' /home/opsuser/edrs_facility/config/settings.yml"
 
 #Rumphi
 #ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 417/; s/district_code\\:/district_code\\: RU/\' /var/www/edrs_facility/config/settings.yml"
