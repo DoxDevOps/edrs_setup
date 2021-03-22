@@ -126,7 +126,10 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s
         stage('Shipping ruby gems') {
           steps {
             sh '''#Ntchisi
-#rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility
+
+#Salima
+rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility'''
           }
         }
 
