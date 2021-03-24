@@ -19,7 +19,7 @@ pipeline {
         echo 'Fetching tags'
         sh 'cd $WORKSPACE/edrs_facility && git fetch --tags -f'
         echo 'Checking out to latest tag'
-        sh 'cd $WORKSPACE/edrs_facility && latestTag=$(git describe --tags `git rev-list --tags --max-count=1`) && git checkout $latesttag'
+        sh 'cd $WORKSPACE/edrs_facility && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)'
         sh 'cd $WORKSPACE/edrs_facility && git describe > HEAD'
       }
     }
@@ -90,7 +90,7 @@ pipeline {
 #rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www
 
 #Salima Server
-rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www'''
       }
     }
 
@@ -118,7 +118,7 @@ rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www'''
 #ssh meduser@10.40.8.4 "sed -i \'s/facility_code\\:/facility_code\\: 1111/; s/district_code\\:/district_code\\: KK/\' /var/www/edrs_facility/config/settings.yml"
 
 #Salima
-ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s/district_code\\:/district_code\\: SA/\' /var/www/edrs_facility/config/settings.yml"
+#ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s/district_code\\:/district_code\\: SA/\' /var/www/edrs_facility/config/settings.yml"
 '''
           }
         }
@@ -129,7 +129,7 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s
 #rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility
 
 #Salima
-rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility'''
           }
         }
 
