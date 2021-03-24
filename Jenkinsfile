@@ -31,7 +31,7 @@ pipeline {
             echo 'Checking if touchscreentoolkit already exists'
             sh '[ -d "$WORKSPACE/edrs_facility/public/touchscreentoolkit" ] && echo "touchscreentoolkit already cloned." || git clone https://github.com/HISMalawi/touchscreentoolkit.git $WORKSPACE/edrs_facility/public/touchscreentoolkit'
             echo 'Pulling to check for latest changes'
-            sh 'cd $WORKSPACE/edrs_facility/public/touchscreentoolkit && git pull'
+            sh 'cd $WORKSPACE/edrs_facility/public/touchscreentoolkit && git fetch --tags -f && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)'
             echo 'all changes up-to-date'
           }
         }
