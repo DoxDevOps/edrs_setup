@@ -14,8 +14,6 @@ pipeline {
         sh '[ -d "edrs_facility" ] && echo "edrs_facility already cloned." || git clone https://github.com/HISMalawi/edrs_dc.git edrs_facility'
         echo 'Giving all users access to the folder'
         sh 'chmod 777 $WORKSPACE/edrs_facility'
-        echo 'Change directory to edrs_facility'
-        sh 'cd $WORKSPACE/edrs_facility && git pull'
         echo 'Fetching tags'
         sh 'cd $WORKSPACE/edrs_facility && git fetch --tags -f'
         echo 'Checking out to latest tag'
