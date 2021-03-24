@@ -39,7 +39,7 @@ pipeline {
             echo 'Checking if couchdb-dump already exists'
             sh '[ -d "$WORKSPACE/edrs_facility/bin/couchdb-dump" ] && echo "couchdb-dump already cloned." || git clone https://github.com/danielebailo/couchdb-dump.git $WORKSPACE/edrs_facility/bin/couchdb-dump'
             echo 'Pulling to check latest changes'
-            sh 'cd $WORKSPACE/edrs_facility/bin/couchdb-dump && git'
+            sh 'cd $WORKSPACE/edrs_facility/bin/couchdb-dump && git pull'
             echo 'Renaming couchdb-dump.sh to couchdb-backup.sh'
             sh '[ -f "$WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-backup.sh" ] && echo "couchdb-backup.sh already exists." || mv $WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-dump.sh $WORKSPACE/edrs_facility/bin/couchdb-dump/couchdb-backup.sh'
           }
