@@ -17,7 +17,8 @@ pipeline {
         echo 'Fetching tags'
         sh 'cd $WORKSPACE/edrs_facility && git fetch --tags -f'
         echo 'Checking out to latest tag'
-        sh 'cd $WORKSPACE/edrs_facility && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)'
+        sh '''#cd $WORKSPACE/edrs_facility && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+cd $WORKSPACE/edrs_facility && git checkout facility'''
         sh 'cd $WORKSPACE/edrs_facility && git describe > HEAD'
       }
     }
