@@ -147,14 +147,16 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root
 
     stage('Installing Ruby Gems') {
       steps {
-        sh '''#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && rm Gemfile.lock
-#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && bundle install --local'''
+        sh '''#Salima
+ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && rm Gemfile.lock
+ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && bundle install --local'''
       }
     }
 
     stage('Setting up Application') {
       steps {
-        sh '#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && rake edrs:setup'
+        sh '''#Salima
+ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && rake edrs:setup'''
       }
     }
 
