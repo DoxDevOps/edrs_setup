@@ -118,7 +118,7 @@ rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www'''
 
 #Salima
 ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s/district_code\\:/district_code\\: SA/\' /var/www/edrs_facility/config/settings.yml"
-'''
+ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
           }
         }
 
@@ -137,22 +137,24 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s
 
     stage('Extracting Shipped Ruby Gems') {
       steps {
-        sh '''#gemdir=`gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`
-#mkdir -p $gemdir
-#tar xvfz sourcegems.tgz -C $gemdir
+        sh '''#Salima
+#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && gemdir=`gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`
+#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && mkdir -p $gemdir
+#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && tar xvfz sourcegems.tgz -C $gemdir
 '''
       }
     }
 
     stage('Installing Ruby Gems') {
       steps {
-        sh '#bundle install --local'
+        sh '''#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && rm Gemfile.lock
+#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && bundle install --local'''
       }
     }
 
     stage('Setting up Application') {
       steps {
-        sh '#rake edrs:setup'
+        sh '#ssh nrb-admin@10.41.154.4 && cd /var/www/edrs_facility && rake edrs:setup'
       }
     }
 
