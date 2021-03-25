@@ -124,13 +124,34 @@ pipeline {
         stage('Shipping ruby gems') {
           steps {
             sh '''#Ntchisi
-#rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility
+#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility
 
 #Salima
-#rsync -a /var/lib/jenkins/workspace/e-DRS_master/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility'''
           }
         }
 
+      }
+    }
+
+    stage('Extracting Shipped Ruby Gems') {
+      steps {
+        sh '''#gemdir=`gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`
+#mkdir -p $gemdir
+#tar xvfz sourcegems.tgz -C $gemdir
+'''
+      }
+    }
+
+    stage('Installing Ruby Gems') {
+      steps {
+        sh '#bundle install --local'
+      }
+    }
+
+    stage('Setting up Application') {
+      steps {
+        sh '#rake edrs:setup'
       }
     }
 
