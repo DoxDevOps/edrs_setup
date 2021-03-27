@@ -156,7 +156,7 @@ ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && rm Gemfile.lock\'
     stage('Setting up application') {
       steps {
         sh '''#Salima
-ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && bundle install\''''
+ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && rake edrs:setup\''''
       }
     }
 
