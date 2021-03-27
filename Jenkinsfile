@@ -132,6 +132,13 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root
           }
         }
 
+        stage('Shiping bundle script') {
+          steps {
+            sh '''#Salima
+rsync -a /var/lib/jenkins/setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility'''
+          }
+        }
+
       }
     }
 
