@@ -149,7 +149,7 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root
       steps {
         sh '''#Salima
 ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && rm Gemfile.lock\'
-ssh nrb-admin@10.41.154.4 "\'bundle install --local\' /var/www/edrs_facility"'''
+#ssh nrb-admin@10.41.154.4 "\'bundle install --local\' /var/www/edrs_facility"'''
       }
     }
 
