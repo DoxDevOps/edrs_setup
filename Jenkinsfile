@@ -157,7 +157,7 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root
         sh '''#Salima
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && rm Gemfile.lock\'
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && ./setup.sh\'
-python3 edrs_setup.py
+python edrs_setup.py
 '''
       }
     }
