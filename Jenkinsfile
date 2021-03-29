@@ -157,7 +157,7 @@ rsync -a /var/lib/jenkins/setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility'
         sh '''#Salima
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && rm Gemfile.lock\'
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && ./setup.sh\'
-cd $WORKSPACE && ./edrs_setup.py
+python3 edrs_setup.py
 '''
       }
     }
