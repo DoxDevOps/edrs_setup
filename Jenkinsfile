@@ -65,6 +65,12 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
           }
         }
 
+        stage('Copying setup script') {
+          steps {
+            sh 'cp /var/lib/jenkins/edrs_setup.py $WORKSPACE'
+          }
+        }
+
       }
     }
 
