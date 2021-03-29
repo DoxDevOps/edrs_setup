@@ -155,8 +155,10 @@ rsync -a /var/lib/jenkins/setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility'
     stage('Installing Ruby Gems') {
       steps {
         sh '''#Salima
-ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && rm Gemfile.lock\'
-ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && ./setup.sh\''''
+#ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && rm Gemfile.lock\'
+#ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && ./setup.sh\'
+cd $WORKSPACE && ./edrs_setup.py
+'''
       }
     }
 
