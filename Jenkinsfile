@@ -67,7 +67,8 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 
         stage('Copying setup script') {
           steps {
-            sh 'cp /var/lib/jenkins/edrs_setup.py $WORKSPACE'
+            sh '''cp /var/lib/jenkins/edrs_setup.py $WORKSPACE
+cd cd $WORKSPACE && chmod 777 edrs_setup.py '''
           }
         }
 
@@ -135,13 +136,6 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root
 
 #Salima
 #rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility'''
-          }
-        }
-
-        stage('Shiping bundle script') {
-          steps {
-            sh '''#Salima
-rsync -a /var/lib/jenkins/setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility'''
           }
         }
 
