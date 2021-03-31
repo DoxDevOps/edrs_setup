@@ -65,13 +65,6 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
           }
         }
 
-        stage('Copying setup script') {
-          steps {
-            sh '''#cp /var/lib/jenkins/edrs_setup.py $WORKSPACE
-#cd $WORKSPACE && chmod 777 edrs_setup.py '''
-          }
-        }
-
       }
     }
 
@@ -96,7 +89,10 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www
 
 #Salima Server
-rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www
+
+#Bwaila Server
+rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.5.20:/var/www'''
       }
     }
 
@@ -124,8 +120,12 @@ rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www'''
 #ssh meduser@10.40.8.4 "sed -i \'s/facility_code\\:/facility_code\\: 1111/; s/district_code\\:/district_code\\: KK/\' /var/www/edrs_facility/config/settings.yml"
 
 #Salima
-ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s/district_code\\:/district_code\\: SA/\' /var/www/edrs_facility/config/settings.yml"
-ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
+#ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s/district_code\\:/district_code\\: SA/\' /var/www/edrs_facility/config/settings.yml"
+#ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
+
+#Bwaila
+ssh nrb-admin@10.41.5.20 "sed -i \'s/facility_code\\:/facility_code\\: 1503/; s/district_code\\:/district_code\\: LL/\' /var/www/edrs_facility/config/settings.yml"
+ssh nrb-admin@10.41.5.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
           }
         }
 
@@ -135,13 +135,20 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root
 #rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility
 
 #Salima
-#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility
+
+#Bwaila
+rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.5.20:/var/www/edrs_facility'''
           }
         }
 
-        stage('Shipping installation scrip') {
+        stage('Shipping installation script') {
           steps {
-            sh 'rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility'
+            sh '''#Salima
+#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility
+
+#Bwaila
+rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facility'''
           }
         }
 
@@ -154,6 +161,11 @@ ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && gemdir=`gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && mkdir -p $gemdir\'
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && tar xvfz sourcegems.tgz -C $gemdir\'
+
+#Bwaila
+ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && gemdir=`gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`
+ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && mkdir -p $gemdir\'
+ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && tar xvfz sourcegems.tgz -C $gemdir\'
 '''
       }
     }
