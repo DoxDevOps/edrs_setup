@@ -138,7 +138,7 @@ ssh nrb-admin@10.41.5.20 "sed -i \'s/password\\: password/password\\: ebrs.root/
 #rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility
 
 #Bwaila
-rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.5.20:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.5.20:/var/www/edrs_facility'''
           }
         }
 
@@ -148,7 +148,7 @@ rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.5.20:/var/www/edrs_faci
 #rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility
 
 #Bwaila
-rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facility'''
           }
         }
 
@@ -163,7 +163,7 @@ rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facil
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && tar xvfz sourcegems.tgz -C $gemdir\'
 
 #Bwaila
-ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && gemdir=`gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`
+ssh nrb-admin@10.41.5.20 "cd /var/www/edrs_facility && gemdir=`gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`"
 ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && mkdir -p $gemdir\'
 ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && tar xvfz sourcegems.tgz -C $gemdir\'
 '''
