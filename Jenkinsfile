@@ -164,8 +164,8 @@ ssh nrb-admin@10.41.5.20 "sed -i \'s/password\\: password/password\\: ebrs.root/
 
 #Bwaila
 ssh nrb-admin@10.41.5.20 "cd /var/www/edrs_facility && gemdir=`gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`"
-ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && mkdir -p $gemdir\'
-ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && tar xvfz sourcegems.tgz -C $gemdir\'
+ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && mkdir -p `gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`\'
+ssh nrb-admin@10.41.5.20 \'cd /var/www/edrs_facility && tar xvfz sourcegems.tgz -C `gem env | grep "\\- INSTALLATION DIRECTORY" | awk -F \': \' {\'print $2\'}`\'
 '''
       }
     }
