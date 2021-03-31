@@ -77,7 +77,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.20.20:/var/www
 
 #ntchisi Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.41.150.10:/var/www
+rsync -a $WORKSPACE/edrs_facility meduser@10.41.150.10:/var/www
 
 #Chiradzulu Server
 #rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www
@@ -92,7 +92,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www
 
 #Bwaila Server
-rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.5.20:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.5.20:/var/www'''
       }
     }
 
@@ -108,7 +108,8 @@ rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.5.20:/var/www'''
 #ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 417/; s/district_code\\:/district_code\\: RU/\' /var/www/edrs_facility/config/settings.yml"
 
 #Ntchisi
-#ssh meduser@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 1210/; s/district_code\\:/district_code\\: NS/\' /var/www/edrs_facility/config/settings.yml"
+ssh meduser@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 1210/; s/district_code\\:/district_code\\: NS/\' /var/www/edrs_facility/config/settings.yml"
+ssh nrb-admin@10.41.150.10 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Chiradzulu
 #ssh nrb-admin@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 2801/; s/district_code\\:/district_code\\: CZ/\' /var/www/edrs_facility/config/settings.yml"
@@ -124,15 +125,15 @@ rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.5.20:/var/www'''
 #ssh nrb-admin@10.41.154.4 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Bwaila
-ssh nrb-admin@10.41.5.20 "sed -i \'s/facility_code\\:/facility_code\\: 1503/; s/district_code\\:/district_code\\: LL/\' /var/www/edrs_facility/config/settings.yml"
-ssh nrb-admin@10.41.5.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
+#ssh nrb-admin@10.41.5.20 "sed -i \'s/facility_code\\:/facility_code\\: 1503/; s/district_code\\:/district_code\\: LL/\' /var/www/edrs_facility/config/settings.yml"
+#ssh nrb-admin@10.41.5.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
           }
         }
 
         stage('Shipping ruby gems') {
           steps {
             sh '''#Ntchisi
-#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility
+rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility
 
 #Salima
 #rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility
@@ -147,8 +148,11 @@ ssh nrb-admin@10.41.5.20 "sed -i \'s/password\\: password/password\\: ebrs.root/
             sh '''#Salima
 #rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility
 
+#Ntchisi
+rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.150.10:/var/www/edrs_facility
+
 #Bwaila
-rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facility'''
           }
         }
 
