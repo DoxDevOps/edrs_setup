@@ -148,7 +148,7 @@ ssh nrb-admin@10.41.5.20 "sed -i \'s/password\\: password/password\\: ebrs.root/
 #rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility
 
 #Bwaila
-#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facility'''
+rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facility'''
           }
         }
 
