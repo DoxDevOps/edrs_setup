@@ -83,7 +83,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www
 
 #Mwanza Server
-rsync -a $WORKSPACE/edrs_facility meduser@10.43.113.9:/var/www
+#rsync -a $WORKSPACE/edrs_facility meduser@10.43.113.9:/var/www
 
 #Nkhotakota Server
 #rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www
@@ -122,7 +122,8 @@ ssh meduser@10.43.113.9 "sed -i \'s/facility_code\\:/facility_code\\: 3801/; s/d
 ssh meduser@10.43.113.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Nkhotakota
-#ssh meduser@10.40.8.4 "sed -i \'s/facility_code\\:/facility_code\\: 1111/; s/district_code\\:/district_code\\: KK/\' /var/www/edrs_facility/config/settings.yml"
+ssh meduser@10.40.8.4 "sed -i \'s/facility_code\\:/facility_code\\: 1111/; s/district_code\\:/district_code\\: KK/\' /var/www/edrs_facility/config/settings.yml"
+ssh meduser@10.40.8.4 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Salima
 #ssh nrb-admin@10.41.154.4 "sed -i \'s/facility_code\\:/facility_code\\: 1415/; s/district_code\\:/district_code\\: SA/\' /var/www/edrs_facility/config/settings.yml"
@@ -153,7 +154,7 @@ ssh meduser@10.43.113.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\
 #rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.136.9:/var/www/edrs_facility
 
 #Mwanza
-rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.113.9:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.113.9:/var/www/edrs_facility'''
           }
         }
 
@@ -172,7 +173,10 @@ rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.113.9:/var/www/edrs_facil
 #rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.136.9:/var/www/edrs_facility
 
 #Mwanza
-rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.113.9:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.113.9:/var/www/edrs_facility
+
+#Nkhotakota
+rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.40.8.4:/var/www/edrs_facility'''
           }
         }
 
