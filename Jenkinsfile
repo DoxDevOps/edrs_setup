@@ -86,7 +86,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility meduser@10.43.113.9:/var/www
 
 #Nkhotakota Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www
+rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www
 
 #Salima Server
 #rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www
