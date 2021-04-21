@@ -98,7 +98,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility meduser@10.43.136.9:/var/www
 
 #Phalombe Server
-rsync -a $WORKSPACE/edrs_facility meduser@10.43.156.9:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility meduser@10.43.156.9:/var/www'''
       }
     }
 
@@ -141,8 +141,8 @@ rsync -a $WORKSPACE/edrs_facility meduser@10.43.156.9:/var/www'''
 #ssh meduser@10.43.136.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Phalombe
-ssh meduser@10.43.156.9 "sed -i \'s/facility_code\\:/facility_code\\: 3512/; s/district_code\\:/district_code\\: PE/\' /var/www/edrs_facility/config/settings.yml"
-ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
+#ssh meduser@10.43.156.9 "sed -i \'s/facility_code\\:/facility_code\\: 3512/; s/district_code\\:/district_code\\: PE/\' /var/www/edrs_facility/config/settings.yml"
+#ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
           }
         }
 
@@ -189,7 +189,7 @@ rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.156.9:/var/www/edrs_facil
 #rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.40.8.4:/var/www/edrs_facility
 
 #Phalombe
-rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.156.9:/var/www/edrs_facility
+#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.156.9:/var/www/edrs_facility
 '''
           }
         }
