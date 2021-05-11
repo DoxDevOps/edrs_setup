@@ -73,9 +73,6 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
         sh '''#OpsUsers Server
 #rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser
 
-#Rumphi Server
-#rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.20.20:/var/www
-
 #ntchisi Server
 #rsync -a $WORKSPACE/edrs_facility meduser@10.41.150.10:/var/www
 
@@ -98,7 +95,13 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility meduser@10.43.136.9:/var/www
 
 #Phalombe Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.43.156.9:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility meduser@10.43.156.9:/var/www
+
+#Rumphi Server
+rsync -a $WORKSPACE/edrs_facility ebrs_server@10.2.12.201:/var/www
+
+#Karonga Server
+rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.24.20:/var/www'''
       }
     }
 
@@ -109,9 +112,6 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
             echo 'Editng District id and Facility Code'
             sh '''#OpsUser
 #ssh opsuser@10.44.0.52 "sed -i \'s/facility_code\\:/facility_code\\: 3333/; s/district_code\\:/district_code\\: DV3/\' /home/opsuser/edrs_facility/config/settings.yml"
-
-#Rumphi
-#ssh ebrs_server@10.40.20.20 "sed -i \'s/facility_code\\:/facility_code\\: 417/; s/district_code\\:/district_code\\: RU/\' /var/www/edrs_facility/config/settings.yml"
 
 #Ntchisi
 #ssh meduser@10.41.150.10 "sed -i \'s/facility_code\\:/facility_code\\: 1210/; s/district_code\\:/district_code\\: NS/\' /var/www/edrs_facility/config/settings.yml"
@@ -142,7 +142,18 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 
 #Phalombe
 #ssh meduser@10.43.156.9 "sed -i \'s/facility_code\\:/facility_code\\: 3512/; s/district_code\\:/district_code\\: PE/\' /var/www/edrs_facility/config/settings.yml"
-#ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
+#ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
+
+
+#Rumphi
+ssh ebrs_server@10.2.12.201 "sed -i \'s/facility_code\\:/facility_code\\: 417/; s/district_code\\:/district_code\\: RU/\' /var/www/edrs_facility/config/settings.yml"
+ssh ebrs_server@10.2.12.201 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
+
+#Karonga
+ssh ebrs_server@10.40.24.20 "sed -i \'s/facility_code\\:/facility_code\\: 206/; s/district_code\\:/district_code\\: KA/\' /var/www/edrs_facility/config/settings.yml"
+ssh ebrs_server@10.40.24.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
+
+'''
           }
         }
 
@@ -164,7 +175,13 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.113.9:/var/www/edrs_facility
 
 #Phalombe
-#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.156.9:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.156.9:/var/www/edrs_facility
+
+#Rumphi
+rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.2.12.201:/var/www/edrs_facility
+
+#Karonga
+rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.24.20:/var/www/edrs_facility'''
           }
         }
 
@@ -189,7 +206,13 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.40.8.4:/var/www/edrs_facility
 
 #Phalombe
-rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.156.9:/var/www/edrs_facility
+#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.156.9:/var/www/edrs_facility
+
+#Rumphi
+rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.2.12.201:/var/www/edrs_facility
+
+#Karonga
+rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.40.24.20:/var/www/edrs_facility
 '''
           }
         }
