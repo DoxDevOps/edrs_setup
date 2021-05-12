@@ -101,7 +101,10 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility ebrs_server@10.2.12.201:/var/www
 
 #Karonga Server
-rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.24.20:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.24.20:/var/www
+
+#KCH Server
+rsync -a $WORKSPACE/edrs_facility nrb-admin@10.40.2.8:/var/www'''
       }
     }
 
@@ -150,10 +153,12 @@ rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.24.20:/var/www'''
 #ssh ebrs_server@10.2.12.201 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Karonga
-ssh ebrs_server@10.40.24.20 "sed -i \'s/facility_code\\:/facility_code\\: 206/; s/district_code\\:/district_code\\: KA/\' /var/www/edrs_facility/config/settings.yml"
-ssh ebrs_server@10.40.24.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
+#ssh ebrs_server@10.40.24.20 "sed -i \'s/facility_code\\:/facility_code\\: 206/; s/district_code\\:/district_code\\: KA/\' /var/www/edrs_facility/config/settings.yml"
+#ssh ebrs_server@10.40.24.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
-'''
+#KCH
+ssh nrb-admin@10.40.2.8 "sed -i \'s/facility_code\\:/facility_code\\: 1519/; s/district_code\\:/district_code\\: LL/\' /var/www/edrs_facility/config/settings.yml"
+ssh nrb-admin@10.40.2.8 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
           }
         }
 
@@ -181,7 +186,10 @@ ssh ebrs_server@10.40.24.20 "sed -i \'s/password\\: password/password\\: ebrs.ro
 #rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.2.12.201:/var/www/edrs_facility
 
 #Karonga
-rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.24.20:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.24.20:/var/www/edrs_facility
+
+#KCH
+rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.40.2.8:/var/www/edrs_facility'''
           }
         }
 
@@ -212,8 +220,10 @@ rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.24.20:/var/www/edrs_f
 #rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.2.12.201:/var/www/edrs_facility
 
 #Karonga
-rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.40.24.20:/var/www/edrs_facility
-'''
+#rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.40.24.20:/var/www/edrs_facility
+
+#KCH
+rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.40.2.8:/var/www/edrs_facility'''
           }
         }
 
