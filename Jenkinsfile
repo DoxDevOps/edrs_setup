@@ -189,7 +189,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.24.20:/var/www/edrs_facility
 
 #KCH
-#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.40.2.8:/var/www/edrs_facility'''
+rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.40.2.8:/var/www/edrs_facility'''
           }
         }
 
@@ -223,7 +223,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.40.24.20:/var/www/edrs_facility
 
 #KCH
-rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.40.2.8:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.40.2.8:/var/www/edrs_facility'''
           }
         }
 
