@@ -107,7 +107,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility nrb-admin@10.40.2.8:/var/www
 
 #Balaka Server
-rsync -a $WORKSPACE/edrs_facility meduser@10.42.51.4:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility meduser@10.42.51.4:/var/www'''
       }
     }
 
@@ -164,8 +164,8 @@ rsync -a $WORKSPACE/edrs_facility meduser@10.42.51.4:/var/www'''
 #ssh nrb-admin@10.40.2.8 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Balaka
-ssh meduser@10.43.156.9 "sed -i \'s/facility_code\\:/facility_code\\: 3601/; s/district_code\\:/district_code\\: BLK/\' /var/www/edrs_facility/config/settings.yml"
-ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
+#ssh meduser@10.43.156.9 "sed -i \'s/facility_code\\:/facility_code\\: 3601/; s/district_code\\:/district_code\\: BLK/\' /var/www/edrs_facility/config/settings.yml"
+#ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
           }
         }
 
@@ -236,7 +236,7 @@ rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.42.51.4:/var/www/edrs_facili
 #rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.40.2.8:/var/www/edrs_facility
 
 #Balaka
-rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.42.51.4:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.42.51.4:/var/www/edrs_facility'''
           }
         }
 
