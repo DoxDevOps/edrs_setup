@@ -110,7 +110,10 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility meduser@10.42.51.4:/var/www
 
 #Mzimba Server
-rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.13.4:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.13.4:/var/www
+
+#Dedza Server
+rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.84.10:/var/www'''
       }
     }
 
@@ -171,8 +174,12 @@ rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.13.4:/var/www'''
 #ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Mzimba
-ssh ebrs_server@10.40.13.4 "sed -i \'s/facility_code\\:/facility_code\\: 532/; s/district_code\\:/district_code\\: MZ/\' /var/www/edrs_facility/config/settings.yml"
-ssh ebrs_server@10.40.13.4 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
+#ssh ebrs_server@10.40.13.4 "sed -i \'s/facility_code\\:/facility_code\\: 532/; s/district_code\\:/district_code\\: MZ/\' /var/www/edrs_facility/config/settings.yml"
+#ssh ebrs_server@10.40.13.4 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
+
+#Dedza
+ssh nrb-admin@10.41.84.10 "sed -i \'s/facility_code\\:/facility_code\\: 1707/; s/district_code\\:/district_code\\: DZ/\' /var/www/edrs_facility/config/settings.yml"
+ssh nrb-admin@10.41.84.10 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
           }
         }
 
@@ -209,7 +216,10 @@ ssh ebrs_server@10.40.13.4 "sed -i \'s/password\\: password/password\\: ebrs.roo
 #rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.42.51.4:/var/www/edrs_facility
 
 #Mzimba
-rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.13.4:/var/www/edrs_facility
+#rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.13.4:/var/www/edrs_facility
+
+#Dedza
+rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.84.10:/var/www/edrs_facility
 '''
           }
         }
@@ -250,7 +260,10 @@ rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.13.4:/var/www/edrs_fa
 #rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.42.51.4:/var/www/edrs_facility
 
 #Mzimba
-rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.40.13.4:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.40.13.4:/var/www/edrs_facility
+
+#Dedza
+rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.84.10:/var/www/edrs_facility'''
           }
         }
 
