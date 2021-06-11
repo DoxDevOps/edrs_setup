@@ -116,10 +116,10 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.84.10:/var/www
 
 #Mchinj Server
-rsync -a $WORKSPACE/edrs_facility meduser@10.41.152.10:/var/www
+#rsync -a $WORKSPACE/edrs_facility meduser@10.41.152.10:/var/www
 
 #Likoma Server
-rsync -a $WORKSPACE/edrs_facility ebrsv2@10.40.29.20:/var/www'''
+#rsync -a $WORKSPACE/edrs_facility ebrsv2@10.40.29.20:/var/www'''
       }
     }
 
@@ -188,12 +188,12 @@ rsync -a $WORKSPACE/edrs_facility ebrsv2@10.40.29.20:/var/www'''
 #ssh nrb-admin@10.41.84.10 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Mchinji
-ssh meduser@10.41.152.10 "sed -i \'s/facility_code\\:/facility_code\\: 1609/; s/district_code\\:/district_code\\: MC/\' /var/www/edrs_facility/config/settings.yml"
-ssh meduser@10.41.152.10 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
+#ssh meduser@10.41.152.10 "sed -i \'s/facility_code\\:/facility_code\\: 1609/; s/district_code\\:/district_code\\: MC/\' /var/www/edrs_facility/config/settings.yml"
+#ssh meduser@10.41.152.10 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Likoma
-ssh ebrsv2@10.40.29.20 "sed -i \'s/facility_code\\:/facility_code\\: 601/; s/district_code\\:/district_code\\: LA/\' /var/www/edrs_facility/config/settings.yml"
-ssh ebrsv2@10.40.29.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
+#ssh ebrsv2@10.40.29.20 "sed -i \'s/facility_code\\:/facility_code\\: 601/; s/district_code\\:/district_code\\: LA/\' /var/www/edrs_facility/config/settings.yml"
+#ssh ebrsv2@10.40.29.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"'''
           }
         }
 
@@ -236,10 +236,10 @@ ssh ebrsv2@10.40.29.20 "sed -i \'s/password\\: password/password\\: ebrs.root/\'
 #rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.84.10:/var/www/edrs_facility
 
 #Mchinj
-rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.41.152.10:/var/www/edrs_facility
+#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.41.152.10:/var/www/edrs_facility
 
 #Likoma
-rsync -a /var/lib/jenkins/sourcegems.tgz ebrsv2@10.40.29.20:/var/www/edrs_facility
+#rsync -a /var/lib/jenkins/sourcegems.tgz ebrsv2@10.40.29.20:/var/www/edrs_facility
 '''
           }
         }
@@ -286,10 +286,10 @@ rsync -a /var/lib/jenkins/sourcegems.tgz ebrsv2@10.40.29.20:/var/www/edrs_facili
 #rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.84.10:/var/www/edrs_facility
 
 #Mchinji
-rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.41.152.10:/var/www/edrs_facility
+#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.41.152.10:/var/www/edrs_facility
 
 #Likoma
-rsync -a /var/lib/jenkins/edrs_setup.sh ebrsv2@10.40.29.20:/var/www/edrs_facility'''
+#rsync -a /var/lib/jenkins/edrs_setup.sh ebrsv2@10.40.29.20:/var/www/edrs_facility'''
           }
         }
 
