@@ -95,7 +95,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #rsync -a $WORKSPACE/edrs_facility meduser@10.43.136.9:/var/www
 
 #Phalombe Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.43.156.9:/var/www
+rsync -a $WORKSPACE/edrs_facility meduser@10.43.156.9:/var/www
 
 #Rumphi Server
 #rsync -a $WORKSPACE/edrs_facility ebrs_server@10.2.12.201:/var/www
@@ -159,8 +159,8 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #ssh meduser@10.43.136.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 #Phalombe
-#ssh meduser@10.43.156.9 "sed -i \'s/facility_code\\:/facility_code\\: 3512/; s/district_code\\:/district_code\\: PE/\' /var/www/edrs_facility/config/settings.yml"
-#ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
+ssh meduser@10.43.156.9 "sed -i \'s/facility_code\\:/facility_code\\: 3512/; s/district_code\\:/district_code\\: PE/\' /var/www/edrs_facility/config/settings.yml"
+ssh meduser@10.43.156.9 "sed -i \'s/password\\: password/password\\: ebrs.root/\' /var/www/edrs_facility/config/database.yml"
 
 
 #Rumphi
