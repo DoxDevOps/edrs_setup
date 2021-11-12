@@ -156,94 +156,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
             sh '''#Ntchisi
 #rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.41.150.10:/var/www/edrs_facility
 
-#Salima
-#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.154.4:/var/www/edrs_facility
-
-#Bwaila
-#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.5.20:/var/www/edrs_facility
-
-#Nsanje
-#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.136.9:/var/www/edrs_facility
-
-#Mwanza
-#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.113.9:/var/www/edrs_facility
-
-#Phalombe
-#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.43.156.9:/var/www/edrs_facility
-
-#Rumphi
-#rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.2.12.201:/var/www/edrs_facility
-
-#Karonga
-#rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.24.20:/var/www/edrs_facility
-
-#KCH
-#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.40.2.8:/var/www/edrs_facility
-
-#Balaka
-#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.42.51.4:/var/www/edrs_facility
-
-#Mzimba
-#rsync -a /var/lib/jenkins/sourcegems.tgz ebrs_server@10.40.13.4:/var/www/edrs_facility
-
-#Dedza
-#rsync -a /var/lib/jenkins/sourcegems.tgz nrb-admin@10.41.84.10:/var/www/edrs_facility
-
-#Mchinj
-#rsync -a /var/lib/jenkins/sourcegems.tgz meduser@10.41.152.10:/var/www/edrs_facility
-
-#Likoma
-#rsync -a /var/lib/jenkins/sourcegems.tgz ebrsv2@10.40.29.20:/var/www/edrs_facility
 '''
-          }
-        }
-
-        stage('Shipping installation script') {
-          steps {
-            sh '''#Salima
-#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.154.4:/var/www/edrs_facility
-
-#Ntchisi
-#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.41.150.10:/var/www/edrs_facility
-
-#Bwaila
-#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.5.20:/var/www/edrs_facility
-
-#Nsanje
-#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.136.9:/var/www/edrs_facility
-
-#Mwanza
-#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.113.9:/var/www/edrs_facility
-
-#Nkhotakota
-#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.40.8.4:/var/www/edrs_facility
-
-#Phalombe
-#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.43.156.9:/var/www/edrs_facility
-
-#Rumphi
-#rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.2.12.201:/var/www/edrs_facility
-
-#Karonga
-#rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.40.24.20:/var/www/edrs_facility
-
-#KCH
-#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.40.2.8:/var/www/edrs_facility
-
-#Balaka
-#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.42.51.4:/var/www/edrs_facility
-
-#Mzimba
-#rsync -a /var/lib/jenkins/edrs_setup.sh ebrs_server@10.40.13.4:/var/www/edrs_facility
-
-#Dedza
-#rsync -a /var/lib/jenkins/edrs_setup.sh nrb-admin@10.41.84.10:/var/www/edrs_facility
-
-#Mchinji
-#rsync -a /var/lib/jenkins/edrs_setup.sh meduser@10.41.152.10:/var/www/edrs_facility
-
-#Likoma
-#rsync -a /var/lib/jenkins/edrs_setup.sh ebrsv2@10.40.29.20:/var/www/edrs_facility'''
           }
         }
 
@@ -272,13 +185,6 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
 #ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && ./setup.sh\'
 #python edrs_setup.py
 '''
-      }
-    }
-
-    stage('Setting up application') {
-      steps {
-        sh '''#Salima
-#ssh nrb-admin@10.41.154.4 \'cd /var/www/edrs_facility && rake edrs:setup\''''
       }
     }
 
