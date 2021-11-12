@@ -73,53 +73,7 @@ cd $WORKSPACE/edrs_facility && git checkout facility'''
         sh '''#OpsUsers Server
 #rsync -a $WORKSPACE/edrs_facility opsuser@10.44.0.52:/home/opsuser
 
-#ntchisi Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.41.150.10:/var/www
-
-#Chiradzulu Server
-#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.43.68.9:/var/www
-
-#Mwanza Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.43.113.9:/var/www
-
-#Nkhotakota Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.40.8.4:/var/www
-
-#Salima Server
-#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.154.4:/var/www
-
-#Bwaila Server
-#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.5.20:/var/www
-
-#Nsanje Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.43.136.9:/var/www
-
-#Phalombe Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.43.156.9:/var/www
-
-#Rumphi Server
-#rsync -a $WORKSPACE/edrs_facility ebrs_server@10.2.12.201:/var/www
-
-#Karonga Server
-#rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.24.20:/var/www
-
-#KCH Server
-#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.40.2.8:/var/www
-
-#Balaka Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.42.51.4:/var/www
-
-#Mzimba Server
-#rsync -a $WORKSPACE/edrs_facility ebrs_server@10.40.13.4:/var/www
-
-#Dedza Server
-#rsync -a $WORKSPACE/edrs_facility nrb-admin@10.41.84.10:/var/www
-
-#Mchinj Server
-#rsync -a $WORKSPACE/edrs_facility meduser@10.41.152.10:/var/www
-
-#Likoma Server
-#rsync -a $WORKSPACE/edrs_facility ebrsv2@10.40.29.20:/var/www'''
+#python3 edrs_shipping.py'''
       }
     }
 
