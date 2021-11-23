@@ -13,6 +13,10 @@ echo "Checking out to no Couch-db Application"
 echo "____________________________________________"
 git checkout couchdb-removed
 echo "____________________________________________"
+echo "Pulling latest Changes"
+echo "____________________________________________"
+git pull origin couchdb-removed
+echo "____________________________________________"
 echo "Removing Gemfile.lock"
 echo "____________________________________________"
 rm Gemfile.lock
