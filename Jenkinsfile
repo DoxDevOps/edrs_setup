@@ -15,7 +15,7 @@ pipeline {
         echo 'Giving all users access to the folder'
         sh 'chmod 777 $WORKSPACE/edrs_facility'
         echo 'Changing to couchdb-removed branch'
-        sh 'cd $WORKSPACE/edrs_facility && git git checkout couchdb-removed'
+        sh 'cd $WORKSPACE/edrs_facility && git checkout couchdb-removed'
         echo 'Pulling Latest Changes for couchdb-removed branch'
         sh '''#cd $WORKSPACE/edrs_facility && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
 cd $WORKSPACE/edrs_facility && git pull origin couchdb-removed'''
