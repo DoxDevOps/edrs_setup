@@ -46,11 +46,11 @@ for site_id in cluster['site']:
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
 
             # pushing edrs application
-            push_edrs = "rsync " + "-r $WORKSPACE/edrs " + site['username'] + "@" + site['ip_address'] + ":/"
+            push_edrs = "rsync " + "-r $WORKSPACE/edrs_facility " + site['username'] + "@" + site['ip_address'] + ":/var/www/"
             os.system(push_edrs)
 
             # Pushing edrs_setup script
-            push_edrs_setup_script = "rsync " + "-r $WORKSPACE/edrs/edrs_setup.sh " + site['username'] + "@" + site['ip_address'] + ":/var/www"
+            push_edrs_setup_script = "rsync " + "-r $WORKSPACE/edrs_setup.sh " + site['username'] + "@" + site['ip_address'] + ":/var/www/edrs_facility/"
             os.system(push_edrs_setup_script)
 
             # setting up edrs application
@@ -72,7 +72,7 @@ for site_id in cluster['site']:
 
             # send sms alert
             for recipient in recipients:
-                msg = "Hi there,\n\nDeployment of DNS binding dependancies for " + site['name'] + " completed succesfully.\n\nThanks!\nEGPAF HIS."
+                msg = "Hi there,\n\nDeployment of eDRS facility for " + site['name'] + " completed succesfully.\n\nThanks!\nEGPAF HIS."
                 params = {
                     "api_key": os.getenv('API_KEY'),
                     "recipient": recipient,
@@ -91,7 +91,7 @@ for site_id in cluster['site']:
             if count == 3:
                 for recipient in recipients:
 
-                    msg = "Hi there,\n\nDeployment of DNS binding dependancies for " + site['name'] + " failed to complete after several connection attempts.\n\nThanks!\nEGPAF HIS."
+                    msg = "Hi there,\n\nDeployment of eDRS facility for " + site['name'] + " failed to complete after several connection attempts.\n\nThanks!\nEGPAF HIS."
                     params = {
                         "api_key": os.getenv('API_KEY'),
                         "recipient": recipient,
